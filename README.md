@@ -28,4 +28,4 @@
 
 > Changes in design choices
 > 
-> Changes in smart contract logic(double counting problem)
+> Changes in smart contract logic(double counting problem), [in progess]
