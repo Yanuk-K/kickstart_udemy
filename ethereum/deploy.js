@@ -5,7 +5,7 @@ const compiledFactory = require("./build/CampaignFactory.json");
 const provider = new HDWalletProvider(
   "mnemonic",
   // remember to change this to your own phrase!
-  "provider"
+  "endpoint_provider"
   // remember to change this to your own endpoint!
 );
 const web3 = new Web3(provider);

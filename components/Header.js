@@ -13,7 +13,6 @@ const Header = (props) => {
         <Link route="/">
           <a className="item">Campaigns</a>
         </Link>
-
         <Link route="/campaigns/new">
           <a className="item">+</a>
         </Link>

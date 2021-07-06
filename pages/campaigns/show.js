@@ -12,6 +12,11 @@ class CampaignShow extends Component {
 
     const summary = await campaign.methods.getSummary().call();
 
+    const curAccount = web3.currentProvider.selectedAddress;
+    const curContributeAmount = await campaign.methods
+      .getPersonalAmount(curAccount)
+      .call();
+
     return {
       address: props.query.address,
       minimumContribution: summary[0],
@@ -19,6 +24,8 @@ class CampaignShow extends Component {
       requestsCount: summary[2],
       approversCount: summary[3],
       manager: summary[4],
+      curAccount: curAccount,
+      contributeAmount: web3.utils.fromWei(curContributeAmount, "ether"),
     };
   }
 
@@ -29,6 +36,8 @@ class CampaignShow extends Component {
       minimumContribution,
       requestsCount,
       approversCount,
+      curAccount,
+      contributeAmount,
     } = this.props;
 
     const items = [
@@ -62,6 +71,12 @@ class CampaignShow extends Component {
         meta: "Campaign Balance (ether)",
         description:
           "The balance is how much money this campaign has left to spend",
+      },
+      {
+        header: curAccount,
+        meta: "Contribute Amount for Current Address",
+        description: contributeAmount,
+        style: { overflowWrap: "break-word" },
       },
     ];
 

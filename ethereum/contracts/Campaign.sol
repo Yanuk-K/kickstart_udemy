@@ -28,6 +28,7 @@ contract Campaign {
     uint public minimumContribution;
     mapping(address => bool) public approvers;
     uint public approversCount;
+    mapping(address => uint) contributeAmount;
 
     modifier restricted() {
         require(msg.sender == manager);
@@ -41,9 +42,13 @@ contract Campaign {
 
     function contribute() public payable {
         require(msg.value > minimumContribution);
-
-        approvers[msg.sender] = true;
-        approversCount++;
+        // prevent double counting
+        if(approvers[msg.sender] == false) {
+          approvers[msg.sender] = true;
+          approversCount++;
+          contributeAmount[msg.sender] = 0;
+        }
+        contributeAmount[msg.sender] += msg.value;
     }
 
     function createRequest(string description, uint value, address recipient) public restricted {
@@ -92,5 +97,9 @@ contract Campaign {
 
     function getRequestsCount() public view returns (uint) {
       return requests.length;
+    }
+
+    function getPersonalAmount(address index) public view returns (uint) {
+      return contributeAmount[index];
     }
 }
