@@ -67,7 +67,6 @@
 ### Changes from original code:
 
 > Changes in design choices
-<<<<<<< HEAD
 >
 > Changes in smart contract logic(double counting problem)
 >
@@ -79,7 +78,3 @@
 > _npm run test_
 > Run in local environment
 > _npm run dev_
-=======
-> 
-> Changes in smart contract logic(double counting problem), [in progess]
->>>>>>> 2fcada62832fa32a942a15417ec244d3cde14a2b
