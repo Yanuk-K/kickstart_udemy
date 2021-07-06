@@ -75,6 +75,9 @@
 ### Test & Run
 
 > Tests
-> npm run test
+> 
+> _npm run test_
+> 
 > Run in local environment
-> npm run dev
+> 
+> _npm run dev_
